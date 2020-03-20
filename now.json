@@ -1,15 +1,11 @@
 {
-  "version": 2,
   "builds": [
     {
-      "src": "server/index.ts",
-      "use": "@now/node-server"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/.*",
-      "dest": "/server/index.ts"
+      "src": "nuxt.config.js",
+      "use": "@nuxtjs/now-builder",
+      "config": {
+        "serverFiles": ["serverMiddleware/**"]
+      }
     }
   ]
 }
