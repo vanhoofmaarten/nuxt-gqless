@@ -1,8 +1,6 @@
 import { Configuration } from '@nuxt/types'
 
 const configuration: Configuration = {
-  mode: 'spa',
-
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -20,6 +18,8 @@ const configuration: Configuration = {
   loading: { color: '#fff' },
 
   css: [],
+
+  serverMiddleware: ['~/serverMiddleware/graphql/index.ts'],
 
   buildModules: [
     '@nuxt/typescript-build',

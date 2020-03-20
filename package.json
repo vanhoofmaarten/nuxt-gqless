@@ -5,9 +5,10 @@
   "author": "Maarten Van Hoof",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.ts --watch server -r dotenv/config --exec 'ts-node -P ./server/tsconfig.server.json'",
+    "dev": "nuxt-ts -r dotenv/config",
     "build": "nuxt-ts build",
-    "start": "cross-env NODE_ENV=production ts-node -P ./server/tsconfig.server.json server/index.ts",
+    "start": "nuxt-ts start",
+    "lint": "eslint --ext .ts,.vue --ignore-path .gitignore .",
     "generate": "nuxt generate",
     "gqless:generate": "gqless generate"
   },
