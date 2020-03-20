@@ -2,12 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "server/**/*.ts",
+      "src": "server/index.ts",
       "use": "@now/node"
     }
-  ],
-  "routes": [
-    { "src": "/_nuxt/.+", "headers": { "cache-control": "s-maxage=31536000" } },
-    { "src": "/(.*)", "dest": "$1" }
   ]
 }
