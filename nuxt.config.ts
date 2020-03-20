@@ -1,4 +1,6 @@
-export default {
+import { Configuration } from '@nuxt/types'
+
+const configuration: Configuration = {
   mode: 'universal',
 
   head: {
@@ -34,3 +36,5 @@ export default {
     '@nuxtjs/dotenv'
   ]
 }
+
+export default configuration
