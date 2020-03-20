@@ -12,12 +12,12 @@
     "gqless:generate": "gqless generate"
   },
   "lint-staged": {
-    "*.{js,vue}": "",
-    "*.{css,vue}": ""
+    "*.{js,vue}": "npm run lint",
+    "*.{css,vue}": "stylelint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": ""
     }
   },
   "dependencies": {
