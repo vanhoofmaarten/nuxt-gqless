@@ -1,25 +1,33 @@
-import express, { Application } from 'express'
-import consola from 'consola'
-
+// import express, { Application } from 'express'
+import { IncomingMessage, ServerResponse } from 'http'
+import dispatch from 'micro-route/dispatch'
+import micro from 'micro'
 import graphql from './graphql'
 import nuxt from './nuxt'
 
-const app: Application = express()
-const host = 'localhost'
-const port = 3000
+const init = async () => {
+  const { hostname, port } = new URL(
+    process.env.BASE_URL || 'http://localhost:3000'
+  )
+  const graphqlPath = process.env.GRAPHQL_PATH || '/graphql'
+  const { render: nuxtRender } = await nuxt()
 
-async function start() {
-  // Api
-  graphql({ app, path: '/graphql' })
-
-  // Nuxt
-  app.use(await nuxt({ host, port }))
+  const server = micro(async (req: IncomingMessage, res: ServerResponse) => {
+    await dispatch()
+      .dispatch(graphqlPath, ['GET', 'POST'], graphql)
+      .dispatch(
+        '*',
+        ['GET'],
+        nuxtRender
+      )(req, res)
+  })
 
   // Listen the server
-  app.listen(port, host)
-  consola.ready({
-    message: `Server listening on http://${host}:${port}`,
-    badge: true
+  //
+  server.listen(Number(port), hostname, () => {
+    // eslint-disable-next-line no-console
+    console.log('Server listening on http://' + hostname + ':' + port)
   })
 }
-start()
+
+init()

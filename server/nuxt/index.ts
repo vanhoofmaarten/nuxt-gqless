@@ -1,7 +1,10 @@
+// import { IncomingMessage, ServerResponse } from 'http'
 import { Nuxt, Builder } from 'nuxt'
 import NuxtConfig from '../../nuxt.config'
 
-export default async ({ host, port }: { host: string; port: number }) => {
+const { host, port } = new URL(process.env.BASE_URL || 'http://localhost:3000')
+
+export default async () => {
   NuxtConfig.dev = process.env.NODE_ENV !== 'production'
   NuxtConfig.server = {
     host,
@@ -19,5 +22,5 @@ export default async ({ host, port }: { host: string; port: number }) => {
   }
 
   // Give nuxt middleware to express
-  return nuxt.render
+  return nuxt
 }

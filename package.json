@@ -5,7 +5,7 @@
   "author": "Maarten Van Hoof",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.ts --watch server --exec 'ts-node -P ./server/tsconfig.server.json'",
+    "dev": "cross-env NODE_ENV=development nodemon server/index.ts --watch server -r dotenv/config --exec 'ts-node -P ./server/tsconfig.server.json'",
     "build": "nuxt-ts build",
     "start": "cross-env NODE_ENV=production ts-node -P ./server/tsconfig.server.json server/index.ts",
     "generate": "nuxt generate",
@@ -23,11 +23,13 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.0",
     "@nuxtjs/dotenv": "^1.4.0",
+    "apollo-server-micro": "^2.11.0",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
     "gqless": "0.0.1-alpha.27",
     "graphql-pokeapi": "git+https://github.com/mazipan/graphql-pokeapi.git",
+    "micro-route": "^2.5.0",
     "nuxt": "^2.0.0",
-    "cross-env": "^7.0.2",
-    "express": "^4.17.1",
     "ts-node": "^8.7.0"
   },
   "devDependencies": {
@@ -37,7 +39,7 @@
     "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/stylelint-module": "^3.1.0",
     "@nuxtjs/tailwindcss": "^1.0.0",
-    "apollo-server-express": "^2.11.0",
+    "@types/micro": "^7.3.3",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.10.0",
