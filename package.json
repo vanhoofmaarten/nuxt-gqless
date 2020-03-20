@@ -6,13 +6,14 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.ts --watch server --exec 'ts-node -P ./server/tsconfig.server.json'",
-    "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production ts-node server/index.ts -P ./server/tsconfig.server.json",
-    "generate": "nuxt generate"
+    "build": "nuxt-ts build",
+    "start": "cross-env NODE_ENV=production ts-node -P ./server/tsconfig.server.json server/index.ts",
+    "generate": "nuxt generate",
+    "gqless:generate": "gqless generate"
   },
   "lint-staged": {
-    "*.{js,vue}": "npm run lint",
-    "*.{css,vue}": "stylelint"
+    "*.{js,vue}": "",
+    "*.{css,vue}": ""
   },
   "husky": {
     "hooks": {
@@ -22,10 +23,15 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.0",
     "@nuxtjs/dotenv": "^1.4.0",
+    "gqless": "0.0.1-alpha.27",
     "graphql-pokeapi": "git+https://github.com/mazipan/graphql-pokeapi.git",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
+    "ts-node": "^8.7.0"
   },
   "devDependencies": {
+    "@gqless/cli": "0.0.1-alpha.30",
     "@nuxt/typescript-build": "^0.6.0",
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
@@ -33,12 +39,10 @@
     "@nuxtjs/tailwindcss": "^1.0.0",
     "apollo-server-express": "^2.11.0",
     "babel-eslint": "^10.0.1",
-    "cross-env": "^7.0.2",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-nuxt": ">=0.4.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "express": "^4.17.1",
     "husky": "^4.0.0",
     "lint-staged": "^10.0.0",
     "nodemon": "^2.0.2",
@@ -48,7 +52,6 @@
     "stylelint-config-recess-order": "^2.0.4",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
-    "stylelint-prettier": "^1.1.2",
-    "ts-node": "^8.7.0"
+    "stylelint-prettier": "^1.1.2"
   }
 }

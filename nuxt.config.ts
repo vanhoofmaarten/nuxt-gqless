@@ -1,7 +1,7 @@
 import { Configuration } from '@nuxt/types'
 
 const configuration: Configuration = {
-  mode: 'universal',
+  mode: 'spa',
 
   head: {
     title: process.env.npm_package_name || '',
@@ -20,8 +20,6 @@ const configuration: Configuration = {
   loading: { color: '#fff' },
 
   css: [],
-
-  plugins: [],
 
   buildModules: [
     '@nuxt/typescript-build',

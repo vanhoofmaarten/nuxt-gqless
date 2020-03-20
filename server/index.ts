@@ -1,7 +1,7 @@
 import express, { Application } from 'express'
 import consola from 'consola'
 
-import api from './api'
+import graphql from './graphql'
 import nuxt from './nuxt'
 
 const app: Application = express()
@@ -10,7 +10,7 @@ const port = 3000
 
 async function start() {
   // Api
-  api({ app, path: '/api' })
+  graphql({ app, path: '/graphql' })
 
   // Nuxt
   app.use(await nuxt({ host, port }))
